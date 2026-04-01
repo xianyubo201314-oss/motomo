@@ -1,0 +1,4 @@
+/proxy-lando/*  https://lando.itsoffbrand.io/:splat  200
+/proxy-assets/*  https://assets.itsoffbrand.io/:splat  200
+/proxy-website-files/*  https://cdn.prod.website-files.com/:splat  200
+/*  /index.html  200

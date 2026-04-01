@@ -1,0 +1,22 @@
+[[redirects]]
+  from = "/proxy-lando/*"
+  to = "https://lando.itsoffbrand.io/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy-assets/*"
+  to = "https://assets.itsoffbrand.io/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy-website-files/*"
+  to = "https://cdn.prod.website-files.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
