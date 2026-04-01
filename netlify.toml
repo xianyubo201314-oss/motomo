@@ -2,23 +2,17 @@
   command = "echo 'Skipping Vite build for static HTML'"
   publish = "public"
 
-[[redirects]]
-  from = "/proxy-lando/*"
-  to = "https://lando.itsoffbrand.io/:splat"
-  status = 200
-  force = true
+[[edge_functions]]
+  path = "/proxy-lando/*"
+  function = "proxy"
 
-[[redirects]]
-  from = "/proxy-assets/*"
-  to = "https://assets.itsoffbrand.io/:splat"
-  status = 200
-  force = true
+[[edge_functions]]
+  path = "/proxy-assets/*"
+  function = "proxy"
 
-[[redirects]]
-  from = "/proxy-website-files/*"
-  to = "https://cdn.prod.website-files.com/:splat"
-  status = 200
-  force = true
+[[edge_functions]]
+  path = "/proxy-website-files/*"
+  function = "proxy"
 
 [[redirects]]
   from = "/*"
