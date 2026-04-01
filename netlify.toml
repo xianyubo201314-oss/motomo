@@ -1,3 +1,7 @@
+[build]
+  command = "echo 'Skipping Vite build for static HTML'"
+  publish = "public"
+
 [[redirects]]
   from = "/proxy-lando/*"
   to = "https://lando.itsoffbrand.io/:splat"
