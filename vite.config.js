@@ -18,6 +18,9 @@ export default defineConfig({
             proxyReq.setHeader('Referer', 'https://landonorris.com/');
             proxyReq.setHeader('Origin', 'https://landonorris.com');
           });
+          proxy.on('proxyRes', (proxyRes) => {
+            proxyRes.headers['access-control-allow-origin'] = '*';
+          });
         }
       },
       '/proxy-assets': {
@@ -29,6 +32,9 @@ export default defineConfig({
             proxyReq.setHeader('Referer', 'https://landonorris.com/');
             proxyReq.setHeader('Origin', 'https://landonorris.com');
           });
+          proxy.on('proxyRes', (proxyRes) => {
+            proxyRes.headers['access-control-allow-origin'] = '*';
+          });
         }
       },
       '/proxy-website-files': {
@@ -39,6 +45,23 @@ export default defineConfig({
           proxy.on('proxyReq', (proxyReq) => {
             proxyReq.setHeader('Referer', 'https://landonorris.com/');
             proxyReq.setHeader('Origin', 'https://landonorris.com');
+          });
+          proxy.on('proxyRes', (proxyRes) => {
+            proxyRes.headers['access-control-allow-origin'] = '*';
+          });
+        }
+      },
+      // Root-level relative assets fetched by lando-by-OFF+BRAND.js
+      '^/(models|textures|hdri|fonts|dev-js)/.*': {
+        target: 'https://lando.itsoffbrand.io/gl',
+        changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq) => {
+            proxyReq.setHeader('Referer', 'https://landonorris.com/');
+            proxyReq.setHeader('Origin', 'https://landonorris.com');
+          });
+          proxy.on('proxyRes', (proxyRes) => {
+            proxyRes.headers['access-control-allow-origin'] = '*';
           });
         }
       }

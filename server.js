@@ -16,6 +16,9 @@ const proxyOptions = {
     proxyReq: (proxyReq, req, res) => {
       proxyReq.setHeader('Referer', 'https://landonorris.com/');
       proxyReq.setHeader('Origin', 'https://landonorris.com');
+    },
+    proxyRes: (proxyRes, req, res) => {
+      proxyRes.headers['access-control-allow-origin'] = '*';
     }
   }
 };
@@ -38,6 +41,15 @@ app.use('/proxy-assets', createProxyMiddleware({
 app.use('/proxy-website-files', createProxyMiddleware({
   target: 'https://cdn.prod.website-files.com',
   pathRewrite: { '^/proxy-website-files': '' },
+  ...proxyOptions
+}));
+
+// Root level assets loaded by lando JS
+app.use(['/models', '/textures', '/hdri', '/fonts', '/dev-js'], createProxyMiddleware({
+  target: 'https://lando.itsoffbrand.io',
+  pathRewrite: function (path, req) {
+    return '/gl' + path;
+  },
   ...proxyOptions
 }));
 
